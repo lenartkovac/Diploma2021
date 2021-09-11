@@ -242,3 +242,5 @@ with tf.Graph().as_default(), tf.compat.v1.Session(config=config) as sess:
             del train_data
             del train_answ
             train_data, train_answ = load_batch(phone, dped_dir, train_size, PATCH_SIZE)
+        else:
+            print(f'step {i} completed')
