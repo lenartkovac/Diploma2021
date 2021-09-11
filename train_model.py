@@ -173,7 +173,9 @@ with tf.Graph().as_default(), tf.compat.v1.Session(config=config) as sess:
                                         feed_dict={phone_: phone_images, dslr_: dslr_images, adv_: swaps})
         train_acc_discrim += accuracy_temp / eval_step
 
+        print(f"step %d completed" % i)
         if i % eval_step == 0:
+            print("running evaluation...")
 
             # test generator and discriminator CNNs
 
@@ -242,5 +244,3 @@ with tf.Graph().as_default(), tf.compat.v1.Session(config=config) as sess:
             del train_data
             del train_answ
             train_data, train_answ = load_batch(phone, dped_dir, train_size, PATCH_SIZE)
-        else:
-            print(f'step {i} completed')
