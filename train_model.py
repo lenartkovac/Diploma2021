@@ -29,7 +29,11 @@ np.random.seed(0)
 
 # defining system architecture
 
-with tf.Graph().as_default(), tf.compat.v1.Session() as sess:
+# add option to dynamically change GPU memory usage
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+
+with tf.Graph().as_default(), tf.compat.v1.Session(config=config) as sess:
     
     # placeholders for training data
 
